@@ -21,8 +21,7 @@ Yasmeen
 in progress - probably .net
 
 # Online Project Management Tool
-We are are using Trello
-https://trello.com/b/vpFGW9uC/swe-6733
+We are are using <a href="https://trello.com/b/vpFGW9uC/swe-6733" target="_blank">Trello</a>
 
 # Definition of Readyness for Backlog Items
 Each item has a ...
