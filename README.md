@@ -19,3 +19,19 @@ Yasmeen
 
 # Tech Stack:
 in progress - probably .net
+
+# Online Project Management Tool
+We are are using Trello
+https://trello.com/b/vpFGW9uC/swe-6733
+
+# Definition of Readyness for Backlog Items
+Each item has a ...
+-  Title
+-  First Sentence of a User Story
+-  Story Point Estimation
+-  Desription
+-  (Optional) Other Details
+
+# Backlog Item Ordering
+Each Item in the Backlog should be ordered by urgency and story points. If an item is required for other items to be finished it should be listed near the top mitigate bottlenecks. If multiple items have the same level of priority, they should be subsorted by story points in ascending order.
+
