@@ -12,7 +12,7 @@ This team project aims to build an outdoor app (called Rovaly) for adventure see
 Christopher
 Kalil - Dev
 Michael - Scrum Master
-Sharon
+Sharon - UI Tester
 Spencer - Developer
 Vasanthal - Product Owner
 Yasmeen
