@@ -18,7 +18,8 @@ Vasanthal - Product Owner
 Yasmeen
 
 # Tech Stack:
-in progress - probably .net
+probably Flutter Web App Deployed with Firebase
+or "c#"
 
 # Online Project Management Tool
 We are are using <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
