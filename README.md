@@ -9,13 +9,13 @@ Online dating is an enormous industry that grows each year. The findings of comm
 This team project aims to build an outdoor app (called Rovaly) for adventure seekers. Whether they're into hiking, kayaking, rock climbing, or just exploring new trails, the app matches them with like-minded adventurers who share their passion for the great outdoors. The app goes beyond basic metrics to ensure people find a partner who truly gets their love for adventure. 
 
 # Group Members:
-Christopher
-Kalil - Dev
-Michael - Scrum Master
-Sharon - UI Tester
-Spencer - Developer
-Vasanthal - Product Owner
-Yasmeen
+- Christopher
+- Kalil - Dev
+- Michael - Scrum Master
+- Sharon - UI Tester
+- Spencer - Developer
+- Vasanthal - Product Owner
+- Yasmeen
 
 # Tech Stack:
 probably Flutter Web App Deployed with Firebase
