@@ -32,8 +32,21 @@ Each item has a ...
 -  Story Point Estimation
 
 # Backlog Item Ordering
+Back log of items found at <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
+- Account Creation
+- User Story: As a potential user, I would like to start using the Rovaly App
+- Description: Creates a database entity for the user. Password should be hashed but not a requirement.
+- Story Point Estimation: 2
+
+- aaaa
+
+
+# Backlog Item Ordering
 We used the MoSCoW method to order backlog items based on.
 - Technical dependencies
 - Value to user
 - Implementation complexity
+
+
+
 
