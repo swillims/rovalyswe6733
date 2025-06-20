@@ -44,7 +44,12 @@ Login
 - Description: The project requires user verification. Each adventurer has it’s own entity tracked in a database.
 - Story Point Estimation: 4 // 4 do to login token tracking
 <br>
-
+1. First item
+2. Second item
+3. Third item
+    - Indented item
+    - Indented item
+4. Fourth item
 
 # Backlog Item Ordering
 We used the MoSCoW method to order backlog items based on.
