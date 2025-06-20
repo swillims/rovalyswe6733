@@ -27,10 +27,9 @@ We are are using <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
 # Definition of Readyness for Backlog Items
 Each item has a ...
 -  Title
--  Story Point Estimation
 -  First Sentence of a User Story
 -  Desription
--  (Optional) Other Details
+-  Story Point Estimation
 
 # Backlog Item Ordering
 We used the MoSCoW method to order backlog items based on.
