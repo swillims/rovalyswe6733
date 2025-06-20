@@ -33,23 +33,47 @@ Each item has a ...
 
 # Backlog Item Ordering
 Back log of items found at <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
-<br>
-Account Creation
+
+#### Account Creation
 - User Story: As a potential user, I would like to start using the Rovaly App
 - Description: Creates a database entity for the user. Password should be hashed but not a requirement.
 - Story Point Estimation: 2
-<br>
-Login 
+#### Login 
 - User Story: As a registered user, I can access my account.
 - Description: The project requires user verification. Each adventurer has it’s own entity tracked in a database.
 - Story Point Estimation: 4 // 4 do to login token tracking
-<br>
-1. First item
-2. Second item
-3. Third item
-    - Indented item
-    - Indented item
-4. Fourth item
+#### Upload/Edit User Info
+- User Story: As an adventurer, I should be able to specify what kind of adventuring background I have.
+- Description: The app needs a way for users to upload or change their adventuring information. That information needs to be tracked in a database. Some details that should be included “type of adventure, skill level, preferences, and attitude”
+- Story Point Estimation:  3
+#### Delete My Account
+- User Story: As a user, I want to permanently delete my account so my data is not retained.
+- Description: User has ability to delete their account. Deletion removes data from database. GDPR-compliance
+- Story Point Estimation: 3
+#### Swipes
+- User Story: As a potential adventurer, I should be able to find other adventurers I haven’t met yet.
+- Description: App has a matchmaking feature. Matches are tracked. If another person exists and doesn’t have a history of confirmation/deny, that person is new. New people appear as potential matches and matched(confirmed/deny) are tracked in some way.
+- Story Point Estimation: 2
+#### Skill Based Matchmaking
+- User Story: As an adventurer with preferences and skill levels, I would like my matches to reflect my skill level and preferred type of adventure who live in my area.
+- Description: Add an algorithm to the swipes feature to match people based on their adventure types and skill level. Algorithm only includes people who are specified distance away
+- Story Point Estimation: 5
+#### Remove Matches
+- User Story: As a person who does not want to interact with problem causing people, I should be able to remove people from my matches.
+- Description: Users should be able to remove people from matches. Removed matches are changed from confirmed to denied.
+- Story Point Estimation: 1
+#### Instagram Connection
+- User Story: As a social media user, I should be able to connect my social media account(s) to the app.
+- Description: The user should be able to connect their Instagram account and possibly other social media accounts to the app. “The app will allow users to connect their profiles to Instagram and other social media.” The high level feature just specifies connection - not functionality.
+- Story Point Estimation: 1 // if we add functionality change to 5
+#### In-App Messaging
+- User Story: As a user, I want to chat with my matches so I can coordinate adventures.
+- Description: Users can chat with people they have matched with. Implement live messages via Firebase/Firestore or alternative. Text is acceptable. Video is bonus.
+- Story Point Estimation: 3
+#### Upload Photo(s)
+- User Story: As a user, I want to upload adventure photo(s) so I can showcase my experience(s).
+- Description: Users can upload photos. “Users will be able to create& delete the profile and upload photos.” The location is unspecified. We can just have it posted on their profile.
+- Story Point Estimation: 
 
 # Backlog Item Ordering
 We used the MoSCoW method to order backlog items based on.
