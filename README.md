@@ -76,7 +76,7 @@ Back log of items found at <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trel
 - Story Point Estimation: 2
 
 # Backlog Item Ordering
-We used the MoSCoW method to order backlog items based on.
+We used the MoSCoW method to order backlog items and then they were further subsorted by:
 - Technical dependencies
 - Value to user
 - Implementation complexity
