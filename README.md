@@ -17,7 +17,7 @@ By the end of the year, we should have a commerically viable product.
 - Sharon - UI Tester
 - Spencer - Developer
 - Vasanthal - Product Owner
-- Yasmeen
+- Yasmeen - Dev
 
 # Tech Stack:
 Flutter Web App Deployed with Firebase
