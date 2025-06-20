@@ -8,6 +8,7 @@ Online dating is an enormous industry that grows each year. The findings of comm
 # Product Vision:
 This team project aims to build an outdoor app (called Rovaly) for adventure seekers. Whether they're into hiking, kayaking, rock climbing, or just exploring new trails, the app matches them with like-minded adventurers who share their passion for the great outdoors. The app goes beyond basic metrics to ensure people find a partner who truly gets their love for adventure.
 By the end of July, our long-term goal is to create a secure, adventure-focused dating app that intelligently matches users based on shared activity types, skill levels, and preferences—offering features like social media integration, profile customization, swipe-based matching, and in-app messaging. Future enhancements may include single sign-on (SSO), voice/video chat, and richer communication tools to foster real-world connections. 
+Our primary stakeholders for this project is the adventure seekers (people seeking other adventurers), product owner (Vasanthal - the person who represents the user needs), the project team (the people working on developing the software in which they need clear requirements), and the instructor (Dr. Parizi - the one who evaluate the project execution and determines if the software meets the objective)
 
 # Group Members:
 - Christopher - Dev
