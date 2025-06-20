@@ -18,8 +18,7 @@ This team project aims to build an outdoor app (called Rovaly) for adventure see
 - Yasmeen
 
 # Tech Stack:
-probably Flutter Web App Deployed with Firebase
-or "c#"
+Flutter Web App Deployed with Firebase
 
 # Online Project Management Tool
 We are are using <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
@@ -27,11 +26,14 @@ We are are using <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
 # Definition of Readyness for Backlog Items
 Each item has a ...
 -  Title
--  First Sentence of a User Story
 -  Story Point Estimation
+-  First Sentence of a User Story
 -  Desription
 -  (Optional) Other Details
 
 # Backlog Item Ordering
-Each Item in the Backlog should be ordered by urgency and story points. If an item is required for other items to be finished it should be listed near the top mitigate bottlenecks. If multiple items have the same level of priority, they should be subsorted by story points in ascending order.
+We used the MoSCoW method to order backlog items based on.
+- Technical dependencies
+- Value to user
+- Implementation complexity
 
