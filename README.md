@@ -33,14 +33,17 @@ Each item has a ...
 
 # Backlog Item Ordering
 Back log of items found at <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trello</a>
+<br>
 Account Creation
 - User Story: As a potential user, I would like to start using the Rovaly App
 - Description: Creates a database entity for the user. Password should be hashed but not a requirement.
 - Story Point Estimation: 2
 <br>
-sdfsdfvjfds 
-- aaa
-- aaaa
+Login 
+- User Story: As a registered user, I can access my account.
+- Description: The project requires user verification. Each adventurer has it’s own entity tracked in a database.
+- Story Point Estimation: 4 // 4 do to login token tracking
+<br>
 
 
 # Backlog Item Ordering
