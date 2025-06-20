@@ -10,11 +10,11 @@ This team project aims to build an outdoor app (called Rovaly) for adventure see
 By the end of July, our long-term goal is to create a secure, adventure-focused dating app that intelligently matches users based on shared activity types, skill levels, and preferences—offering features like social media integration, profile customization, swipe-based matching, and in-app messaging. Future enhancements may include single sign-on (SSO), voice/video chat, and richer communication tools to foster real-world connections. 
 
 # Group Members:
-- Christopher
+- Christopher - Dev
 - Kalil - Dev
 - Michael - Scrum Master
 - Sharon - UI Tester
-- Spencer - Developer
+- Spencer - Dev
 - Vasanthal - Product Owner
 - Yasmeen - Dev
 
