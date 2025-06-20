@@ -73,7 +73,7 @@ Back log of items found at <a href="https://trello.com/b/vpFGW9uC/swe-6733">Trel
 #### Upload Photo(s)
 - User Story: As a user, I want to upload adventure photo(s) so I can showcase my experience(s).
 - Description: Users can upload photos. “Users will be able to create& delete the profile and upload photos.” The location is unspecified. We can just have it posted on their profile.
-- Story Point Estimation: 
+- Story Point Estimation: 2
 
 # Backlog Item Ordering
 We used the MoSCoW method to order backlog items based on.
