@@ -1,7 +1,8 @@
-language: dart
-
-dart:
-  - stable
+#language: dart
+#
+#dart:
+#  - stable
+language: shell
 
 cache:
   directories:
