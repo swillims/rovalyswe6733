@@ -11,10 +11,12 @@ cache:
 
 before_install:
   #- git clone https://github.com/flutter/flutter.git -b stable --depth 1
-  - git clone https://github.com/flutter/flutter.git -b dev --depth 1
+  #- git clone https://github.com/flutter/flutter.git -b dev --depth 1
+  - git clone https://github.com/flutter/flutter.git -b master --depth 1
   - export PATH="$PATH:`pwd`/flutter/bin"
   - flutter doctor
   - flutter upgrade
+  - flutter precache
   - flutter config --enable-web
   - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
   - sudo apt-get install -y nodejs
