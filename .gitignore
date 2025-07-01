@@ -1,3 +1,14 @@
+# Stuff the default Flutter .gitignore should have but doesn't
+.metadata
+.idea/
+*.iml
+.vscode/
+ios/Flutter/ephemeral/
+windows/flutter/generated_plugin_registrant.*
+windows/flutter/generated_plugins.cmake
+linux/flutter/generated_plugin_registrant.*
+linux/flutter/generated_plugins.cmake
+
 # Miscellaneous
 *.class
 *.lock
