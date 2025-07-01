@@ -1,0 +1,26 @@
+language: dart
+
+dart:
+  - stable
+
+cache:
+  directories:
+    - $HOME/.pub-cache
+
+before_install:
+  - flutter config --enable-web
+  - flutter upgrade
+  - npm install -g firebase-tools
+
+install:
+  - flutter pub get
+
+script:
+  - flutter build web --release
+
+deploy:
+  provider: script
+  script: firebase deploy --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
+  skip_cleanup: true
+  on:
+    branch: main
