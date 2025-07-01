@@ -12,6 +12,7 @@ before_install:
   - git clone https://github.com/flutter/flutter.git -b dev --depth 1
   - export PATH="$PATH:`pwd`/flutter/bin"
   - flutter doctor
+  - flutter upgrade
   - flutter config --enable-web
   - npm install -g firebase-tools@9.23.0
   #- npm install -g firebase-tools
