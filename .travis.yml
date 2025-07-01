@@ -13,7 +13,7 @@ before_install:
   #- git clone https://github.com/flutter/flutter.git -b stable --depth 1
   #- git clone https://github.com/flutter/flutter.git -b dev --depth 1
   #- git clone https://github.com/flutter/flutter.git -b master --depth 1
-  - git clone https://github.com/flutter/flutter.git -b master
+  - git clone https://github.com/flutter/flutter.git -b master --depth 75
   - export PATH="$PATH:`pwd`/flutter/bin"
   - flutter doctor
   - flutter upgrade
@@ -32,7 +32,8 @@ script:
 
 deploy:
   provider: script
-  script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
+  #script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
+  script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" --debug
   skip_cleanup: true
   on:
     branch: dev
