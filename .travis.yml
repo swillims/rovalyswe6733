@@ -20,7 +20,7 @@ script:
 
 deploy:
   provider: script
-  script: firebase deploy --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
+  script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
   skip_cleanup: true
   on:
     branch: main
