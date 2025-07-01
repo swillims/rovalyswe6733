@@ -29,7 +29,14 @@ install:
 
 script:
   - flutter build web --release
-
+  
+before_deploy:
+  - echo "Files in build/web:"
+  - ls -R build/web
+  - echo "Contents of index.html:"
+  - head -n 20 build/web/index.html || echo "index.html missing!"
+  - echo "Token length: ${#FIREBASE_TOKEN}"
+  
 deploy:
   provider: script
   #script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
