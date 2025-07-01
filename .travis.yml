@@ -15,7 +15,8 @@ before_install:
   - flutter doctor
   - flutter upgrade
   - flutter config --enable-web
-  - sudo apt-get update -y && sudo apt-get install -y nodejs npm
+  - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
   - npm install -g firebase-tools@9.23.0
   #- npm install -g firebase-tools
 
