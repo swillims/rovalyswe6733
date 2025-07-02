@@ -43,6 +43,10 @@ before_deploy:
   - ls -la
   - echo "Check if build/web exists:"
   - ls -la build/web
+  - echo "Deploying from directory:"
+  - pwd
+  - echo "firebase.json contents:"
+  - cat firebase.json
   
   
 deploy:
