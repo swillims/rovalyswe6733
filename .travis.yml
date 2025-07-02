@@ -35,8 +35,10 @@ before_deploy:
   - ls -R build/web
   - echo "Contents of index.html:"
   - head -n 20 build/web/index.html || echo "index.html missing!"
-  - bash -c 'echo "Token length: ${#FIREBASE_TOKEN}"'
+  #- bash -c 'echo "Token length: ${#FIREBASE_TOKEN}"'
   #- echo "Token length: ${#FIREBASE_TOKEN}"
+  - echo "Token length:"
+  - echo ${#FIREBASE_TOKEN}
   
 deploy:
   provider: script
