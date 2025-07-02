@@ -39,6 +39,11 @@ before_deploy:
   #- echo "Token length: ${#FIREBASE_TOKEN}"
   - echo "Token length:"
   - echo ${#FIREBASE_TOKEN}
+  - echo "Contents of current directory:"
+  - ls -la
+  - echo "Check if build/web exists:"
+  - ls -la build/web
+  
   
 deploy:
   provider: script
