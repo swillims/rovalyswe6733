@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-//import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyAe5kTlgtp7KP7MuIQ6L8wqKj0jclPB9yM",
+      authDomain: "swe6733wc.firebaseapp.com",
+      projectId: "swe6733wc",
+      storageBucket: "swe6733wc.appspot.com",
+      messagingSenderId: "292059682722",
+      appId: "1:292059682722:web:b67ec047322f30955784fb",
+      measurementId: "G-14V6B2ZW08",
+    ),
+  ).then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Rovaly',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -32,7 +47,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Rovaly'),
     );
   }
 }
@@ -67,6 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
+    // This was just to test database connection
+    FirebaseFirestore.instance.collection('counters').add(
+      {
+      'count': _counter,
+      'timestamp': FieldValue.serverTimestamp(),
+      });
   }
 
   @override
