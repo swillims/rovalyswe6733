@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+// I don't know why have this one and afraid to remove it
+import 'package:flutter/services.dart';
+
+// next scene after login
+import 'home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,9 +77,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  //int _counter = 0;
+  String _username = "";
+  String _password = "";
+  String _error = "";
 
-  void _incrementCounter() {
+  /*void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -84,11 +93,67 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     // This was just to test database connection
-    FirebaseFirestore.instance.collection('counters').add(
+    //FirebaseFirestore.instance.collection('counters').add(
+    //  {
+    //  'count': _counter,
+    //  'timestamp': FieldValue.serverTimestamp(),
+    //  });
+  }*/
+  void _login()
+  {
+    if(_username.isEmpty)
+    {
+      setState(() 
       {
-      'count': _counter,
-      'timestamp': FieldValue.serverTimestamp(),
+        _error = "Missing Username";
       });
+      return;
+    }
+    if(_password.isEmpty)
+    {
+      setState(() 
+      {
+        _error = "Missing Password";
+      });
+      return;
+    }
+    FirebaseFirestore.instance.collection('users').doc(_username).get().then((dataSearch) 
+    {
+      if(!dataSearch.exists)
+      {
+        setState(()
+        {
+          _error = "Username/Password is incorrect";
+        });
+        return;
+      }
+      //Map<String, dynamic>? data = dataSearch.data();
+      final data = dataSearch.data();
+      if(data != null && data.containsKey('password'))
+      {
+        if(_password == data['password'])
+        {
+          SharedPreferences.getInstance().then((notCookies)
+          {
+            notCookies.setBool('loggedIn', true); // I don't know if this is needed
+            notCookies.setString('username', _username);
+            Navigator.push(context,
+              MaterialPageRoute
+              (
+                builder: (_) => Home(),
+              ));
+          });
+          
+        }
+        else
+        {
+          setState(()
+          {
+            _error = "Username/Password is incorrect";
+          });
+        }
+      }
+    });
   }
 
   @override
@@ -128,19 +193,168 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            //const Text('You have pushed the button this many times:'),
+            //Text(
+            //  '$_counter',
+            //  style: Theme.of(context).textTheme.headlineMedium,
+            //),
+            Text(_error, style: TextStyle(color: Colors.red),),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("UserName:"),
+                SizedBox(
+                  width: 200.0,
+                  child: TextFormField
+                  (
+                    onChanged: (input) {_username = input;},
+                  ),
+                )
+              ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Password:"),
+                SizedBox(
+                  width: 200.0,
+                  //child: TextField(textAlign: TextAlign.left,),
+                  child: TextFormField
+                  (
+                    onChanged: (input) {_password = input;},
+                  ),
+                )
+              ],
+            ),
+            //TextField(textAlign: TextAlign.center,),
+            //TextField(textAlign: TextAlign.center,),
+            TextButton(onPressed: _login, child: Text("Login")), //login has a lot of logic so not doing functional coding here
+            TextButton(onPressed: () 
+            {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CreateAccount(),
+                  )
+              );
+              }, child: Text("Create Account")),
           ],
+
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      //floatingActionButton: FloatingActionButton(
+      //  onPressed: _incrementCounter,
+      //  tooltip: 'Increment',
+      //  child: const Icon(Icons.add),
+      //), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class CreateAccount extends StatefulWidget
+{
+  const CreateAccount({Key? key}) : super(key: key);
+
+  @override
+  State<CreateAccount> createState() => _CreateAccountState();
+}
+
+class _CreateAccountState extends State<CreateAccount> {
+  String _username = "";
+  String _password = "";
+  String _error = "";
+   @override
+  Widget build(BuildContext context)
+  {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text("Rovaly"),
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Form(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Create Account"),
+            Text(_error, style: TextStyle(color: Colors.red),),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("UserName:"),
+                SizedBox(
+                  width: 200.0,
+                  child: TextFormField
+                  (
+                    onChanged: (input) {_username = input;},
+                  ),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Password:"),
+                SizedBox(
+                  width: 200.0,
+                  //child: TextField(textAlign: TextAlign.left,),
+                  child: TextFormField
+                  (
+                    onChanged: (input) {_password = input;},
+                  ),
+                )
+              ],
+            ),
+            TextButton(
+              onPressed: () {
+                //then used to avoid async
+                //setState(() {
+                //    _error = "checking..."; // I don't know why this makes the next one display but skips this one but it fixes the next one
+                //  });
+                if(_username.isEmpty)
+                {
+                  setState(() {
+                    _error = "Missing Username";
+                    });
+                    return;
+                }
+                if(_password.isEmpty)
+                {
+                  setState(() {
+                    _error = "Missing Password";
+                    });
+                    return;
+                }
+                FirebaseFirestore.instance.collection('users').doc(_username).get().then((dataSearch) 
+                {
+                  if(dataSearch.exists)
+                  {
+                    setState(() {
+                    _error = "Username already exists";
+                    });
+                    return;
+                  }
+                  FirebaseFirestore.instance.collection('users').doc(_username).set({
+                    'password': _password, // Don't store plain passwords in production
+                    }).then((_) 
+                    {
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (_) => MyApp(),
+                        )
+                      );
+                    });
+                }
+                );
+              },
+              child: Text("Create Account")
+             )
+          ]
+        ),
+      ),
+      ),
     );
   }
 }
