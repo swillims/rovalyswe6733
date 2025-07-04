@@ -2,6 +2,10 @@
 Project for SWE6733
 
 ## Group Name: White Clover
+
+# Live Demo
+https://swe6733wc.web.app/
+
 # Background:
 Online dating is an enormous industry that grows each year. The findings of commissioned research concur with the periodic reports from top data aggregator firms of international repute. Reports reveal the revenue of top dating apps has almost doubled between 2017 and 2023. The number of online dating app users has also grown by nearly 80% in the past six years. As the audience for online dating has gotten bigger, the technology to meaningfully match different types of users has lagged behind. Oftentimes users, especially those looking for outdoor partners/adventurers to go explore a new place or activity, are matched using irrelevant metrics and statistics. Yes, users can use Bumble, OkCupid, or other apps, but they’re not adventure-specific, per se, to find like-minded partners for outdoor activities. As this has become commonplace, users find themselves matched with people who appear not to want the same thing, which may result in a lower-quality experience for all. That said, there is a shortage of creating a new outlet for finding adventure partners.
  
