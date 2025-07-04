@@ -2,6 +2,10 @@
 Project for SWE6733
 
 ## Group Name: White Clover
+
+# Live Demo
+https://swe6733wc.web.app/
+
 # Background:
 Online dating is an enormous industry that grows each year. The findings of commissioned research concur with the periodic reports from top data aggregator firms of international repute. Reports reveal the revenue of top dating apps has almost doubled between 2017 and 2023. The number of online dating app users has also grown by nearly 80% in the past six years. As the audience for online dating has gotten bigger, the technology to meaningfully match different types of users has lagged behind. Oftentimes users, especially those looking for outdoor partners/adventurers to go explore a new place or activity, are matched using irrelevant metrics and statistics. Yes, users can use Bumble, OkCupid, or other apps, but they’re not adventure-specific, per se, to find like-minded partners for outdoor activities. As this has become commonplace, users find themselves matched with people who appear not to want the same thing, which may result in a lower-quality experience for all. That said, there is a shortage of creating a new outlet for finding adventure partners.
  
@@ -87,6 +91,9 @@ We used the MoSCoW method to order backlog items and then they were further subs
 - Value to user
 - Implementation complexity
 
-
+# Forecast:
+## Sprint 1 (June 29 - July 5)
+### Story Points: 6
+We plan to get the Login and Account Creation done this week. These are the two most important things to set up for the Rovaly app, as they are the prerequisites for every other task that we have to do. After an account has been created, the user can use their information to log in if they log out. They should be able to access the settings, delete their account, upload/edit their information, use in-app messaging, skill-based matching, etc. Since we started this on Thursday, we have to forecast that we won't be able to complete that many stories, but by next week, we plan to get more done.
 
 
