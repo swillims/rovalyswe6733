@@ -55,4 +55,4 @@ deploy:
   script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" --debug
   skip_cleanup: true
   on:
-    branch: dev
+    branch: main
