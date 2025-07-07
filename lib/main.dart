@@ -198,7 +198,11 @@ class _MyHomePageState extends State<MyHomePage> {
             //  '$_counter',
             //  style: Theme.of(context).textTheme.headlineMedium,
             //),
-            Text(_error, style: TextStyle(color: Colors.red),),
+            Text("Login"),
+            Text(
+              key: ValueKey('errormessage'),
+              _error,
+              style: TextStyle(color: Colors.red),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -207,6 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 200.0,
                   child: TextFormField
                   (
+                    key: ValueKey('usename'),
                     onChanged: (input) {_username = input;},
                   ),
                 )
@@ -221,6 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //child: TextField(textAlign: TextAlign.left,),
                   child: TextFormField
                   (
+                    key: ValueKey('password'),
                     onChanged: (input) {_password = input;},
                   ),
                 )
@@ -228,8 +234,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             //TextField(textAlign: TextAlign.center,),
             //TextField(textAlign: TextAlign.center,),
-            TextButton(onPressed: _login, child: Text("Login")), //login has a lot of logic so not doing functional coding here
-            TextButton(onPressed: () 
+            TextButton(
+              key: ValueKey('loginbutton'),
+              onPressed: _login, child: Text("Login")
+              ), //login has a lot of logic so not doing functional coding here
+            TextButton(
+              key: ValueKey('createaccount'),
+              onPressed: () 
             {
               Navigator.push(
                 context,
@@ -279,7 +290,10 @@ class _CreateAccountState extends State<CreateAccount> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Create Account"),
-            Text(_error, style: TextStyle(color: Colors.red),),
+            Text(
+              key: ValueKey('errormessage2'),
+              _error,
+              style: TextStyle(color: Colors.red),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -288,6 +302,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   width: 200.0,
                   child: TextFormField
                   (
+                    key: ValueKey('usename2'),
                     onChanged: (input) {_username = input;},
                   ),
                 )
@@ -302,12 +317,14 @@ class _CreateAccountState extends State<CreateAccount> {
                   //child: TextField(textAlign: TextAlign.left,),
                   child: TextFormField
                   (
+                    key: ValueKey('password2'),
                     onChanged: (input) {_password = input;},
                   ),
                 )
               ],
             ),
             TextButton(
+              key: ValueKey('createaccount2'),
               onPressed: () {
                 //then used to avoid async
                 //setState(() {
