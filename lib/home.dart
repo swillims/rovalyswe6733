@@ -16,11 +16,40 @@ class Home extends StatelessWidget
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              key: ValueKey('title'),
+              key: ValueKey('hometitle'),
               "Home" // update test case if this is changed
-              )
+              ),
+            TextButton(
+              key: ValueKey('matches'),
+              onPressed: ()
+              {
+
+              },
+              child: Text("Match with people")),
+            TextButton(
+              key: ValueKey('photos'),
+              onPressed: ()
+              {
+
+              },
+              child: Text("filler text")),
+            TextButton(
+              key: ValueKey('settings'),
+              onPressed: ()
+              {
+
+              },
+              child: Text("filler text")),
+            TextButton(
+              key: ValueKey('logout'),
+              onPressed: ()
+              {
+
+              },
+              child: Text("filler text")),
           ],
         )
       )
