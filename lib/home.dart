@@ -5,6 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//
+//
+//
+//
+import 'photos.dart';
+
 class Home extends StatelessWidget
 {
   @override
@@ -33,9 +39,14 @@ class Home extends StatelessWidget
               key: ValueKey('photos'),
               onPressed: ()
               {
-
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Photos(),
+                  )
+              );
               },
-              child: Text("filler text")),
+              child: Text("Upload/Manage Photos")),
             TextButton(
               key: ValueKey('settings'),
               onPressed: ()
@@ -47,7 +58,7 @@ class Home extends StatelessWidget
               key: ValueKey('logout'),
               onPressed: ()
               {
-
+                
               },
               child: Text("filler text")),
           ],
