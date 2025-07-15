@@ -87,7 +87,7 @@ class _PhotosState extends State<Photos> {
                   String url = images!.values.elementAt(index);
                   return SizedBox
                   (
-                    width: 250,
+                    height: 300,
                     child: Align
                     (
                       alignment: Alignment.bottomCenter,
@@ -99,7 +99,7 @@ class _PhotosState extends State<Photos> {
                           Image.network
                           (
                             url,
-                            width: 250,
+                            height: 300,
                             errorBuilder: (context, error, stackTrace) 
                             {
                               return Icon(Icons.broken_image);
