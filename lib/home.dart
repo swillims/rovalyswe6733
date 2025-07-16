@@ -1,4 +1,6 @@
 // may use later idk
+import 'package:rovalyswe6733/Profile.dart';
+
 import 'main.dart';
 
 import 'package:flutter/material.dart';
@@ -53,9 +55,14 @@ class Home extends StatelessWidget
               key: ValueKey('settings'),
               onPressed: ()
               {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => Profile(),
+                    )
+                );
               },
-              child: Text("filler text")),
+              child: Text("Profile & Settings")),
             TextButton(
               key: ValueKey('logout'),
               onPressed: ()
