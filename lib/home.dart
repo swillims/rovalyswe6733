@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 //
 //
+import 'matches.dart';
 //
 //
 import 'photos.dart';
@@ -32,7 +33,12 @@ class Home extends StatelessWidget
               key: ValueKey('matches'),
               onPressed: ()
               {
-
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Matches(),
+                  )
+              );
               },
               child: Text("Match with people")),
             TextButton(
