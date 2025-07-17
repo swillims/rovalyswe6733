@@ -218,8 +218,8 @@ class _MatchesState extends State<Matches> {
         _currentmatch = "";
         _scrollText = "No matches found :(" ; // 
         images = {};
-        return;
       });
+      return;
     }
     // setState() is in fetchImages
     _currentmatch = _usernames[0];
@@ -255,6 +255,8 @@ class _MatchesState extends State<Matches> {
   }
   Future<void> setMatch(String target, bool matchStatus) async
   {
+    if(target==null || target=="") return;
+
     final fb = FirebaseFirestore.instance.collection('users');
     //await FirebaseFirestore.instance.collection('users').doc(_username).set
     await fb.doc(_username).set
@@ -280,32 +282,29 @@ class _MatchesState extends State<Matches> {
           {
             String primKey = _username! + "§" +  target; //ide made me randomly add a null check
             await fb.doc(_username).set(
-            {
-              'chats':
               {
-                primKey
-              }
-            },
-            SetOptions(merge: true));
+                'chats': FieldValue.arrayUnion([primKey])
+              },SetOptions(merge: true));
             await fb.doc(target).set(
-            {
-              'chats':
               {
-                primKey
-              }
-            },
-            SetOptions(merge: true));
+                'chats': FieldValue.arrayUnion([primKey])
+              },SetOptions(merge: true));
             DateTime time = DateTime.now();
             await FirebaseFirestore.instance.collection('chats').doc(primKey).set(
               {
                 'message':
                 {
-                  'user': "auto send",
-                  'time': Timestamp.fromDate(time),
-                  'text': "new chat opened",
+                  Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + " null user":
+                  {
+                    'user': "auto send",
+                    //'time': Timestamp.fromDate(time),
+                    'time': time.millisecondsSinceEpoch,
+                    'text': "new chat opened",
+                  }
                 }
               },
               SetOptions(merge: true));
+              //print("millisecondsSinceEpoch: ${time.millisecondsSinceEpoch}");
           }
         }
       }
