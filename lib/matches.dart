@@ -255,7 +255,9 @@ class _MatchesState extends State<Matches> {
   }
   Future<void> setMatch(String target, bool matchStatus) async
   {
-    await FirebaseFirestore.instance.collection('users').doc(_username).set
+    final fb = FirebaseFirestore.instance.collection('users');
+    //await FirebaseFirestore.instance.collection('users').doc(_username).set
+    await fb.doc(_username).set
     ({
       'matchstatus':
       {
@@ -263,6 +265,51 @@ class _MatchesState extends State<Matches> {
       } 
     }, SetOptions(merge: true));
     if(_usernames.contains(target)) _usernames.remove(target);
+    if(matchStatus) // true = to confirm match // need to logic to check if mutual match
+    {
+      final targetDoc = await fb.doc(target).get();
+      final targetData = targetDoc.data();
+      if(targetData != null) // null check // this one might not be necessary but afraid to get rid of it
+      {
+        //final targetMatches = Map<String, dynamic>.from(targetData['matchstatus']);
+        final targetMatches = Map<String, dynamic>.from(targetData['matchstatus'] ?? {});
+        //if(target != null) //null check
+        if(true) // left in because didn't want to realign code after fixing a thing
+        {
+          if(targetMatches.containsKey(_username) && targetMatches[_username] == true) // short circuit operator handles null check
+          {
+            String primKey = _username! + "§" +  target; //ide made me randomly add a null check
+            await fb.doc(_username).set(
+            {
+              'chats':
+              {
+                primKey
+              }
+            },
+            SetOptions(merge: true));
+            await fb.doc(target).set(
+            {
+              'chats':
+              {
+                primKey
+              }
+            },
+            SetOptions(merge: true));
+            DateTime time = DateTime.now();
+            await FirebaseFirestore.instance.collection('chats').doc(primKey).set(
+              {
+                'message':
+                {
+                  'user': "auto send",
+                  'time': Timestamp.fromDate(time),
+                  'text': "new chat opened",
+                }
+              },
+              SetOptions(merge: true));
+          }
+        }
+      }
+    }
     await getNextMatch(); // await optional because end of method
   }
 }
