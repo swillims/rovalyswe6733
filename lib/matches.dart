@@ -296,10 +296,10 @@ class _MatchesState extends State<Matches> {
                 {
                   Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + " null user":
                   {
-                    'user': "auto send",
+                    'user': "auto",
                     //'time': Timestamp.fromDate(time),
                     'time': time.millisecondsSinceEpoch,
-                    'text': "new chat opened",
+                    'text': "new chat between " + _username! + " and " + target,
                   }
                 }
               },
