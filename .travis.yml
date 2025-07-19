@@ -55,7 +55,9 @@ before_deploy:
 deploy:
   provider: script
   #script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" # I have a string literal I can use if this doesn't work
-  script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" --debug
+  #script: firebase deploy --project swe6733wc --token "$FIREBASE_TOKEN" --debug
+  script: firebase deploy --only hosting --project swe6733wc --token "$FIREBASE_TOKEN" --debug
+  
   skip_cleanup: true
   on:
     branch: main
