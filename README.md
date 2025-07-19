@@ -96,4 +96,6 @@ We used the MoSCoW method to order backlog items and then they were further subs
 ### Story Points: 6
 We plan to get the Login and Account Creation done this week. These are the two most important things to set up for the Rovaly app, as they are the prerequisites for every other task that we have to do. After an account has been created, the user can use their information to log in if they log out. They should be able to access the settings, delete their account, upload/edit their information, use in-app messaging, skill-based matching, etc. Since we started this on Thursday, we have to forecast that we won't be able to complete that many stories, but by next week, we plan to get more done.
 
-
+## Sprint 2 (July 6 - July 18)
+### Story Points: 10
+We got two things done: Login and Account Creation. Since we didn’t complete that many story points last week and we have only 20 points left to cover, we forecast that we can get 10 story points done this week. We have more time now to complete more than just two tasks. So, we plan to work on Upload/Edit User Info, Delete Account, Upload Photos, and Swipes. This way, the user should be able to perform actions after setting up their account, such as updating their information.
