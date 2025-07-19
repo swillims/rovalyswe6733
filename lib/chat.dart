@@ -231,27 +231,22 @@ class _ChatState extends State<Chat>
       for(String c in chatdata)
       {
         final doc = await FirebaseFirestore.instance.collection('chats').doc(c).get();
-        final docdata = doc.data();
-        final latestEntry = docdata!.entries.reduce((a, b)
+        //print(docdata);
+        final doclist = doc.data()!["message"]!.entries.toList();
+        doclist.sort((a, b)
         {
-          final aTime = int.tryParse(a.key.split(' ').first) ?? 0;
-          final bTime = int.tryParse(b.key.split(' ').first) ?? 0;
-          return aTime >= bTime ? a : b;
+          final aTime = a.value['time'] ?? 0;
+          final bTime = b.value['time'] ?? 0;
+          return (aTime as int).compareTo(bTime as int);
         });
-        //final data = (latestEntry.value as Map<String, dynamic>).values.first();
-        //final data = latestEntry.value as Map<String, dynamic>;
-        final data = (latestEntry.value as Map<String, dynamic>).values.first;
-        //print(data);
-        //print(data.values.first);
+        //final data = doclist.first.value;
+        final data = doclist.last.value;
         String display = data['user'] + ": " + data['text'];
-        //print(display);
         lastMessages!.add([c, display]);
-        //print(data['user']);
       } 
       setState(() 
       {
-        "";
-        //print(lastMessages);
+        ""; // Don't delete this. It does nothing on purpose. Set state needs to do something to queue a rebuild.
       });
     }
   }
