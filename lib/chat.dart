@@ -126,7 +126,7 @@ class _ChatState extends State<Chat>
                             (
                               onPressed: ()
                               {
-
+                                removeChat(lastMessages![index][0]);
                               },
                               child: Text("Remove Chat")
                             ),
@@ -323,7 +323,7 @@ class _ChatState extends State<Chat>
     {
       'message':
       {
-        Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + " null user":
+        Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + _username!:
         {
           'user': _username,
           'time': time.millisecondsSinceEpoch,
@@ -351,5 +351,29 @@ class _ChatState extends State<Chat>
     }
     fetchMessages(currentChat);
     //print("--5 seconds --");
+  }
+  void removeChat(String chatprimkey) async
+  {
+    DateTime time = DateTime.now();
+    await FirebaseFirestore.instance.collection('chats').doc(chatprimkey).set(
+    {
+      'message':
+      {
+        Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + _username!:
+        {
+          'user': _username,
+          'time': time.millisecondsSinceEpoch,
+          'text': _username! + " has left the chat",
+        }
+      }
+    },SetOptions(merge: true));
+
+    final fb = FirebaseFirestore.instance.collection('users');
+    await fb.doc(_username).set(
+    {
+      'chats': FieldValue.arrayRemove([chatprimkey])
+    },SetOptions(merge: true));
+
+    fetchChats();
   }
 }
