@@ -99,3 +99,7 @@ We plan to get the Login and Account Creation done this week. These are the two 
 ## Sprint 2 (July 6 - July 18)
 ### Story Points: 10
 We got two things done: Login and Account Creation. Since we didn’t complete that many story points last week and we have only 20 points left to cover, we forecast that we can get 10 story points done this week. We have more time now to complete more than just two tasks. So, we plan to work on Upload/Edit User Info, Delete Account, Upload Photos, and Swipes. This way, the user should be able to perform actions after setting up their account, such as updating their information.
+
+## Sprint 3 (July 20 - July 25)
+### Story Points: 12
+So we are on the last sprint. We have completed most of the story points we originally planned, but we had to change plans and complete some other story points that we didn’t plan to do. That means we now have 12 left. We know it’s going to be a lot of work in such a short time, especially since we also have to do presentations, but we believe we can do it. All we have left is Skill-Based Matchmaking, Instagram Connection, Delete Account, and Upload/Edit User Info.
