@@ -9,7 +9,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 //
 //
+import 'matches.dart';
 //
+import 'chat.dart';
 //
 import 'photos.dart';
 
@@ -36,7 +38,12 @@ class Home extends StatelessWidget
               key: ValueKey('matches'),
               onPressed: ()
               {
-
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Matches(),
+                  )
+              );
               },
               child: Text("Match with people")),
             TextButton(
@@ -51,6 +58,18 @@ class Home extends StatelessWidget
               );
               },
               child: Text("Upload/Manage Photos")),
+            TextButton(
+              key: ValueKey('chat'),
+              onPressed: ()
+              {
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Chat(),
+                  )
+              );
+              },
+              child: Text("View Chats")),
             TextButton(
               key: ValueKey('settings'),
               onPressed: ()

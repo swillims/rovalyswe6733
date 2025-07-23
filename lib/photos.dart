@@ -51,7 +51,10 @@ class _PhotosState extends State<Photos> {
     final doc = await FirebaseFirestore.instance.collection('users').doc(_username).get();
     if (doc.exists) {
       setState(() {
-        images = doc.data()?['image'] as Map<String, dynamic>?;
+        Map<String, dynamic>? imagedata = doc.data()?['image'] as Map<String, dynamic>?;
+        if (imagedata == null) imagedata = {};
+        //images = doc.data()?['image'] as Map<String, dynamic>?;
+        images = imagedata;
       });
     }
   }
