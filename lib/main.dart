@@ -264,7 +264,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class CreateAccount extends StatefulWidget
 {
-  const CreateAccount({Key? key}) : super(key: key);
+  const CreateAccount({super.key});
 
   @override
   State<CreateAccount> createState() => _CreateAccountState();

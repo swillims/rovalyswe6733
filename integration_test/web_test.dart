@@ -132,13 +132,15 @@ void main() {
 String randString(int size)
 {
   String str = "";
-  for (int i = 0; i<size; i++)
+  for (int i = 0; i<size; i++) {
     str += String.fromCharCode(Random().nextInt(126-32)+32);
+  }
   return str;
 }
 
 Future<void> sleep(WidgetTester t, seconds) async
 {
-  for (int i = 0; i < seconds*2; i++)
+  for (int i = 0; i < seconds*2; i++) {
     await t.pump(const Duration(milliseconds: 500));
+  }
 }
