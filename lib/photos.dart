@@ -15,6 +15,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 class Photos extends StatefulWidget
 {
+  const Photos({super.key});
+
   @override
   State<Photos> createState() => _PhotosState();
 }
@@ -251,7 +253,7 @@ class _PhotosState extends State<Photos> {
     if (value == url) 
     {
       id = key;
-      print("Match: " + key);
+      print("Match: $key");
     }
   });
     try

@@ -21,6 +21,9 @@ class Matches extends StatefulWidget
 
 class _MatchesState extends State<Matches> {
 
+  List<String>? adventureTypes = ['hiking', 'canoeing', 'rock climbing', 'cave diving']; // ignore technical debt
+  Map<String, bool>? hasAdventureTypes;
+
   String _error = "";
   String? _username = "";
   String _currentmatch = "";
@@ -165,6 +168,11 @@ class _MatchesState extends State<Matches> {
     {
       return;
     }
+
+    // borrowed method make open preferences
+    await fetchAdventureTypes();
+    print(hasAdventureTypes);
+
     CollectionReference<Map<String, dynamic>> users = FirebaseFirestore.instance.collection('users');
     QuerySnapshot<Map<String, dynamic>> snapshot = await users.get();
     
@@ -203,10 +211,28 @@ class _MatchesState extends State<Matches> {
     await getNextMatch(); // await optional because end of method
   }
   
-  Future<bool> checkUser(uu) async
+  Future<bool> checkUser(String uu) async
   {
-    // sprint3 do code to check for distance, adventure type, etc..
-    return true;
+    Map<String, bool> matchAdventures = await getMatchAdventureTypes(uu);
+    //print("matches adventure types");
+    //print(matchAdventures);
+    for(String type in adventureTypes!)
+    {
+      print("type" + type);
+      if(matchAdventures.containsKey(type) && matchAdventures[type]==true)
+      {
+        print("A true");
+        if(hasAdventureTypes!.containsKey(type) && hasAdventureTypes![type]==true)
+        {
+          print("true B");
+          return true; // refactor to include distance if we get more time
+          // psuedo code
+          // if (check distance both)
+          // {return true;}
+        }
+      }
+    }
+    return false;
   }
 
   Future<void> getNextMatch() async
@@ -310,5 +336,51 @@ class _MatchesState extends State<Matches> {
       }
     }
     await getNextMatch(); // await optional because end of method
+  }
+
+  // borrowed from other groupmemeber code
+  Future fetchAdventureTypes() async
+  {
+    final doc = await FirebaseFirestore.instance.collection('users').doc(_username).get();
+
+    if (doc.exists){
+      final raw = doc.data()?['adventureTypes'];
+      if (raw is Map<String, dynamic>) {
+        hasAdventureTypes = raw.map((key, value) => MapEntry(key, value as bool));
+      }
+    }
+    if (hasAdventureTypes == null)
+    {
+      hasAdventureTypes = {};
+    }
+    for(var key in adventureTypes!)
+      if(!hasAdventureTypes!.containsKey(key))
+      {
+        hasAdventureTypes![key] = false;
+      }
+  }
+
+  // borrowed from other groupmemeber code and reverse engineered because lazy
+  Future<Map<String, bool>> getMatchAdventureTypes(String matchKey) async
+  {
+    Map<String, bool> matchAdventures = {};
+
+    final doc = await FirebaseFirestore.instance.collection('users').doc(matchKey).get();
+    if (doc.exists){
+      final raw = doc.data()?['adventureTypes'];
+      if (raw is Map<String, dynamic>) {
+        matchAdventures = raw.map((key, value) => MapEntry(key, value as bool));
+      }
+    }
+    if (matchAdventures == null)
+      matchAdventures = {};
+
+    for(var key in adventureTypes!)
+      if(!matchAdventures!.containsKey(key))
+      {
+        matchAdventures![key] = false;
+      }
+
+    return matchAdventures;
   }
 }

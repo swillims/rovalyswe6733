@@ -1,10 +1,12 @@
 // may use later idk
+import 'package:rovalyswe6733/Profile.dart';
+
 import 'main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 //
 //
 import 'matches.dart';
@@ -15,6 +17,8 @@ import 'photos.dart';
 
 class Home extends StatelessWidget
 {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,20 +74,37 @@ class Home extends StatelessWidget
               key: ValueKey('settings'),
               onPressed: ()
               {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => Profile(),
+                    )
+                );
               },
-              child: Text("filler text")),
+              child: Text("Profile & Settings")),
             TextButton(
               key: ValueKey('logout'),
               onPressed: ()
               {
-                
+
+                MaterialPageRoute(
+                  builder: (_) => MyApp(),
+                  );
+                SharedPreferences.getInstance().then((notCookies)
+          {
+            notCookies.setBool('loggedIn', true); // I don't know if this is needed
+            notCookies.setString('username', "");
+            Navigator.push(context,
+              MaterialPageRoute
+              (
+                builder: (_) => MyApp(),
+              ));
+          });
               },
-              child: Text("filler text")),
+              child: Text("Log Out")),
           ],
         )
       )
     );
   }
-  
 }

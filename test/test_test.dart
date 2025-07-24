@@ -146,8 +146,9 @@ void main() {
 String randString(int size)
 {
   String str = "";
-  for (int i = 0; i<size; i++)
+  for (int i = 0; i<size; i++) {
     str += String.fromCharCode(Random().nextInt(126-32)+32);
+  }
 
   return str;
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,15 +28,17 @@ class _ChatState extends State<Chat>
   String currentChat = "";
   List<dynamic>? chats;
   List<dynamic>? messages;
-  //List<String>;
-  //List<String>? lastMessages;
   List<List<String>>? lastMessages; // consider rename var because it is last message + foreign key to chat
   SharedPreferences? notCookies;
   DateTime identifier = DateTime.now();
 
+  Timer? timer;
+  late ScrollController scrollController;
+
   @override
   void initState() {
     super.initState();
+    scrollController = ScrollController();
     SharedPreferences.getInstance().then((nc)
     {
       notCookies = nc;
@@ -42,7 +46,20 @@ class _ChatState extends State<Chat>
       //fetchImages();
       fetchChats();
     });
+    timer = Timer.periodic(Duration(seconds: 5), (timer)
+    {
+      timerUpdate();
+    });
   }
+
+  @override
+  void dispose() 
+  {
+    scrollController.dispose();
+    timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) 
   {
@@ -89,6 +106,7 @@ class _ChatState extends State<Chat>
                 height: MediaQuery.of(context).size.height * 0.8,
                 child: ListView.builder
                 (
+                  //primary: true, // reading says I need this to do a scroll thing. 50/50 on if going to work
                   itemCount: chats!.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index)
@@ -108,7 +126,7 @@ class _ChatState extends State<Chat>
                             (
                               onPressed: ()
                               {
-
+                                removeChat(lastMessages![index][0]);
                               },
                               child: Text("Remove Chat")
                             ),
@@ -151,9 +169,10 @@ class _ChatState extends State<Chat>
               [
                 Text("Chats"),
                 SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.of(context).size.height * 0.6,
                 child: ListView.builder
                 (
+                  controller: scrollController,
                   itemCount: messages!.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index)
@@ -206,7 +225,23 @@ class _ChatState extends State<Chat>
                       ),
                     ],
                   ),
-              )
+              ),
+              SizedBox
+              (
+                height:  30,
+                child: TextButton
+                (
+                  onPressed: ()
+                  {
+                    setState(() 
+                    {
+                      currentChat = "";
+                      messages = []; // done to make size = 0
+                    });
+                  },
+                  child: Text("Back to Chats")
+                )
+              ),
               ],
             )
           //Text("No Chats")
@@ -252,19 +287,34 @@ class _ChatState extends State<Chat>
   }
   void fetchMessages(String chatprimkey) async
   {
+    //print("here");
+
     final doc = await FirebaseFirestore.instance.collection('chats').doc(chatprimkey).get();
     final doclist = doc.data()!["message"]!.entries.toList();
-    doclist.sort((a, b) 
+    if (messages == null) {messages=[];}
+    if(doclist.length>messages!.length)
     {
-      final aTime = a.value['time'] ?? 0;
-      final bTime = b.value['time'] ?? 0;
-      return (aTime as int).compareTo(bTime as int);
-    });
-    messages = doclist;
-    setState(() 
+      //print("doc");
+      //print(doclist);
+      //print("mes");
+      //print(messages);
+      doclist.sort((a, b) 
+      {
+        final aTime = a.value['time'] ?? 0;
+        final bTime = b.value['time'] ?? 0;
+        return (aTime as int).compareTo(bTime as int);
+      });
+      messages = doclist;
+      setState(() 
       {
         currentChat = chatprimkey;
       });
+      await Future.delayed(Duration(milliseconds: 100));
+      if (scrollController.hasClients)
+      {
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      }
+    }
   }
   void chatSend(String message) async
   {
@@ -273,7 +323,7 @@ class _ChatState extends State<Chat>
     {
       'message':
       {
-        Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + " null user":
+        Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + _username!:
         {
           'user': _username,
           'time': time.millisecondsSinceEpoch,
@@ -284,5 +334,46 @@ class _ChatState extends State<Chat>
       SetOptions(merge: true));
 
     fetchMessages(currentChat);
+  }
+  void timerUpdate() async
+  {
+    if (chats == null)
+    {
+      return;
+    }
+    if (chats!.isEmpty)
+    {
+      return;
+    }
+    if (currentChat=="")
+    {
+      return;
+    }
+    fetchMessages(currentChat);
+    //print("--5 seconds --");
+  }
+  void removeChat(String chatprimkey) async
+  {
+    DateTime time = DateTime.now();
+    await FirebaseFirestore.instance.collection('chats').doc(chatprimkey).set(
+    {
+      'message':
+      {
+        Timestamp.fromDate(time).millisecondsSinceEpoch.toString() + _username!:
+        {
+          'user': _username,
+          'time': time.millisecondsSinceEpoch,
+          'text': _username! + " has left the chat",
+        }
+      }
+    },SetOptions(merge: true));
+
+    final fb = FirebaseFirestore.instance.collection('users');
+    await fb.doc(_username).set(
+    {
+      'chats': FieldValue.arrayRemove([chatprimkey])
+    },SetOptions(merge: true));
+
+    fetchChats();
   }
 }
