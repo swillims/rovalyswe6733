@@ -10,6 +10,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import 'home.dart';
 
+import 'main.dart';
+
 class Profile extends StatefulWidget{
   const Profile({super.key});
 
@@ -174,10 +176,25 @@ class _ProfileState extends State<Profile>{
                 MaterialPageRoute(
                   builder: (_) => Home(),
                   ));
-          });}, child: Text("Apply Changes"))
+          });}, child: Text("Apply Changes")),
+          TextButton(onPressed: () {saveAdventureTypes().then((_) {
+            delete();
+          });}, child: Text("Delete Account")),
         ],
       )
     );
-    
+  }
+
+  void delete() async
+  {
+    await FirebaseFirestore.instance.collection('users').doc(_username).delete();
+
+    notCookies!.setBool('loggedIn', false);
+    notCookies!.setString('username', _username!);
+    Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => MyApp(),
+                  ));
   }
 }
