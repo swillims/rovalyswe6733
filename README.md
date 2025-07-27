@@ -1,7 +1,9 @@
 # Project for SWE 6733
 This is a project for a class taken in postgrad.
+Firebase api key should be deleted so basic redeployment shouldn't be possible?
+last link: https://swe6733wc.web.app/
 
-anything below this line is stuff written for the class
+anything below this line is stuff written during the class
 -----------------------------------
 # Rovaly-SWE6733
 Project for SWE6733
