@@ -1,3 +1,8 @@
+# Project for SWE 6733
+This is a project for a class taken in postgrad.
+
+anything below this line is stuff written for the class
+-----------------------------------
 # Rovaly-SWE6733
 Project for SWE6733
 
