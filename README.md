@@ -16,7 +16,7 @@ Flutter Web App deployed with Firebase
 - Kalil - Developer
 - Sharon - UI Tester
 
-# Other Contributors (minor edits / non-functional changes)
-- Michael - Added junk files to repo and edited README
-- Vasanthal - Added junk file to repo
+# Other Contributors
+- Michael - Added sprint reports and junk files to repo
+- Vasanthal - Added mp4 of a group meeting to repo
 - Yasmeen - Added name to the original README
